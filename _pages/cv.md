@@ -16,6 +16,11 @@ redirect_from:
     content: "† ";
   }
 </style>
+<style>
+  li.double-dagger-marker::marker {
+    content: "‡ ";
+  }
+</style>
 
 ## SUMMARY STATEMENT
 Cornell ORIE doctoral candidate with experience teaching undergraduates, mentoring undergraduates in summer research, developing course curricula, and working alongside student support staff, with academic focuses in queueing theory, disease modelling, and analyzing algorithms. 
@@ -24,9 +29,6 @@ Cornell ORIE doctoral candidate with experience teaching undergraduates, mentori
 * Ph.D Candidate in School of Operations Research and Information Engineering, Cornell University, May 2027 (expected)
 * B.S. in Computer Science and Mathematics, Harvey Mudd College, May 2020 with High Distinction and Honors in Math, Computer Science, and HSA
 
-## HONORS & AWARDS
-HMC Dean’s List, Spring 2017 – Spring 2021; National Merit Scholar, 2016
-
 ## CONFERENCES 
 <ul>{% for post in site.talks reversed %}
   {% include archive-single-talk-cv.html  %}
@@ -34,72 +36,85 @@ HMC Dean’s List, Spring 2017 – Spring 2021; National Merit Scholar, 2016
 
 
 ## PUBLICATIONS
+Pending approval following minor edits:
   <ul>{% for post in site.publications reversed %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
 
+## HONORS & AWARDS
+HMC Dean’s List, Spring 2017 – Spring 2021; National Merit Scholar, 2016
 
 ## TEACHING EXPERIENCE
 
 ### Relevant Graduate Teaching
 
 <table style="border-collapse: collapse; border: none;">  <tr>
-<td style="border: none; padding: 8px; text-align: left;">  <b>Fall 2026</b> Linear Algebra
+<td style="border: none; padding: 8px; text-align: left;">  <b>Fall 2026</b> Linear Algebra<sup>‡</sup>
 </td>
-<td style="border: none; padding: 8px; text-align: left;">  <b>Fall 2022</b> Optimization 1<sup>*</sup><sup>†</sup>
+<td style="border: none; padding: 8px; text-align: left;">  <b>Fall 2023</b> Optimization 1<sup>*</sup><sup>†</sup>
 </td>
 </tr>
 <tr>
-<td style="border: none; padding: 8px; text-align: left;">  <b>Spring 2026</b> Linear Algebra
+<td style="border: none; padding: 8px; text-align: left;">  <b>Spring 2026</b> Linear Algebra<sup>‡</sup>
 </td>
-<td style="border: none; padding: 8px; text-align: left;">  <b>Fall 2023</b> Optimization 1<sup>*</sup><sup>†</sup>
+<td style="border: none; padding: 8px; text-align: left;">   <b>Spring 2023</b> Learning with Big Messy Data<sup>*</sup>
 </td>
 </tr>
 
 <tr>
 <td style="border: none; padding: 8px; text-align: left;">  <b>Fall 2025</b> Engineering Probability and Statistics: Modeling and Data Science
 </td>
-<td style="border: none; padding: 8px; text-align: left;">  <b>Spring 2023</b> Learning with Big Messy Data<sup>*</sup>
+<td style="border: none; padding: 8px; text-align: left;"> <b>Spring 2022</b> Linear Algebra<sup>†</sup>
 </td>
 </tr>
 
 <tr>
 <td style="border: none; padding: 8px; text-align: left;">  <b>Spring 2025</b> Practical Tools for Operations Research, Machine Learning and Data Science<sup>†</sup>
 </td>
-<td style="border: none; padding: 8px; text-align: left;">  <b>Spring 2022</b> Linear Algebra<sup>†</sup>
+<td style="border: none; padding: 8px; text-align: left;">  <b>Fall 2021</b> Optimization 1<sup>*</sup>
 </td>
 </tr>
 
 <tr>
-<td style="border: none; padding: 8px; text-align: left;">  <b>Fall 2024</b> Integral Calculus
+<td style="border: none; padding: 8px; text-align: left;">  <b>Fall 2024</b> Integral Calculus<sup>‡</sup>
 </td>
-<td style="border: none; padding: 8px; text-align: left;">  <b>Fall 2021</b> Optimization 1<sup>*</sup>
+<td style="border: none; padding: 8px; text-align: left;">  <sup>*</sup><i>Cotaught for undergraduate and masters students</i>
 </td>
 </tr>
 
 <tr>
 <td style="border: none; padding: 8px; text-align: left; vertical-align: top;">  <b>Spring 2024</b> Practical Tools for Operations Research, Machine Learning and Data Science<sup>†</sup>
 </td>
-<td style="border: none; padding: 8px; text-align: left;vertical-align: top;">  <sup>*</sup><i>Undergraduate/Masters</i><p><sup>†</sup><i>Head TA</i></p>
+<td style="border: none; padding: 8px; text-align: left;vertical-align: top;">   <sup>†</sup><i>Head TA</i>
 </td>
-
 </tr>
+
+<tr>
+<td style="border: none; padding: 8px; text-align: left; vertical-align: top;">  <b>Fall 2022</b> Optimization 1<sup>*</sup><sup>†</sup>
+</td>
+<td style="border: none; padding: 8px; text-align: left;vertical-align: top;"> <sup>‡</sup><i>Academic Excellence Workshop Content Liaison</i>
+</td>
+</tr>
+
 </table>
 
-#### Teaching for ESMI files
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-
 ### Engineering Summer Math Institute Applied Math Research Project Instructor 
-June-August 2023, 2024, 2025, 2026\
 Office of Inclusive Excellence, Cornell David A. Duffield College of Engineering
+<div class="teaching-list" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 30px; width: 100%;">
+  {% for post in site.teaching %}
+    {% if post.isesmi %}
+      {% include archive-single-cv.html %}
+    {% endif %}
+  {% endfor %}
+</div>
+
 * Developed 30 hours of lectures, coupled with in-class group work, homework, and research mentorship materials.
 * Taught a 2 week intensive, 3 hours of class daily.
 * Covered concepts in combinatorics, set theory, probability, statistics, algorithms, data structures, Python, code development collaboration platforms, and queueing theory.
 * For another 6 weeks taught undergraduates for 2 hours per day,  3 days a week, leading them in developing and completing their own applied math research project.
 * Provided guidance on mathematical research design, project proposal, effective collaborative research group etiquette, skills for interacting with and collaborating with faculty researchers and ongoing research projects, writing a research paper and designing a poster, research slides, and giving oral presentations.
 * Worked to help students prepare to present posters, talks, and abstracts on their work for Cornell’s OIE Summer Research Symposium.
+  
 
 ### Practical Tools for Operations Research, Machine Learning and Data Science Head TA
 * Led team of four graduate TAs and provided mentorship to another ten undergraduate TAs.
@@ -112,7 +127,7 @@ Office of Inclusive Excellence, Cornell David A. Duffield College of Engineering
 * Collaborated with professors from both courses to handle disciplinary measures for some project teams.
 * Led team of undergraduate students in grading final projects & milestones, and giving constructive feedback.
 
-### Linear Algebra (<sup>†</sup>Head TA only) 
+### Linear Algebra (<sup>†</sup>Head TA only; <sup>‡</sup>AEW CL only) 
 <ul> 
 <li> Held weekly office hours. </li>
 <li> Developed weekly recitation section lectures and administered weekly quizzes.</li>
@@ -121,6 +136,8 @@ Office of Inclusive Excellence, Cornell David A. Duffield College of Engineering
 <li class="dagger-marker"> Managed online discussion board of student questions.</li>
 <li class="dagger-marker"> Managed exam logistics and maintained grading schedule for all the course TAs.</li>
 <li class="dagger-marker"> Fielded student emails regarding logistics, extra help, and course concerns.</li>
+<li class="double-dagger-marker"> Prepared weekly reports on the progression and challenges of the students in the course to inform the  the team ofundergraduate AEW facilitators.</li>
+<li class="double-dagger-marker"> Four Content Breakout Session check-ins with the full Cornell Office of Inclusive Excellence AEW program.</li>
 </ul>
 
 ### Optimization 1 Head TA
@@ -134,10 +151,12 @@ Office of Inclusive Excellence, Cornell David A. Duffield College of Engineering
 * Held 2 weekly lecture and collaborative problem solving style recitations and weekly office hours.
 * Developed lectures from existing recitation guide materials.
 
-### Integral Calculus TA
+### Integral Calculus TA and AEW CL
 * Held 3 weekly flipped classroom style recitations and weekly office hours.
 * Developed and proctored weekly quizzes.
 * Graded assignments and exams.
+* Prepared weekly reports on the progression and challenges of the students in the course to inform the  the team ofundergraduate AEW facilitators.
+* Four Content Breakout Session check-ins with the full Cornell Office of Inclusive Excellence AEW program.
 
 ### Learning with Big Messy Data TA
 * Held weekly recitation section lectures and weekly office hours.

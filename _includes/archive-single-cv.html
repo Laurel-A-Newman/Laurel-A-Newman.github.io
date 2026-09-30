@@ -12,31 +12,85 @@
   {% assign title = post.title %}
 {% endif %}
 
-<div class="{{ include.type | default: "list" }}__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
-    <li>
-    {% if include.type == "grid" and teaser %}
-      <div class="archive__item-teaser">
-        <img src=
-          {% if teaser contains "://" %}
-            "{{ teaser }}"
-          {% else %}
-            "{{ teaser | prepend: "/images/" | prepend: base_path }}"
-          {% endif %}
-          alt="">
+{% if post.isesmi %}
+  <div style="display: flex; flex-direction: column; min-width: 150px; padding: 4px 0 10px 0; line-height: 1.3;">
+    <div style="font-weight: bold; margin-bottom: 2px;">
+      {% if post.date_range %}
+        {% assign start_date = post.date_range.start | append: "-01" %}
+        {% assign end_date = post.date_range.end | append: "-01" %}
+        {% assign start_year = start_date | date: "%Y" %}
+        {% assign end_year = end_date | date: "%Y" %}
+        
+        {% if start_year == end_year %}
+          {% capture link_text %}{{ start_date | date: "%B" }} – {{ end_date | date: "%B %Y" }}{% endcapture %}
+        {% else %}
+          {% capture link_text %}{{ start_date | date: "%B %Y" }} – {{ end_date | date: "%B %Y" }}{% endcapture %}
+        {% endif %}
+      {% else %}
+        {% assign link_text = post.date | default: "1900-01-01" | date: "%Y" %}
+      {% endif %}
+
+      {% if post.link %}
+        <a href="{{ post.link }}">{{ link_text }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i></a>
+      {% else %}
+        <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ link_text }}</a>
+      {% endif %}
+    </div>
+    
+    {% if post.syllabus %}
+      <div style="width: 100%; font-size: 0.85em;">
+        <i class="fa fa-fw fa-file-pdf" aria-hidden="true"></i> 
+        <a href="{% if post.syllabus contains '://' %}{{ post.syllabus }}{% else %}{{ base_path }}{{ post.syllabus }}{% endif %}" target="_blank">Syllabus</a>
       </div>
     {% endif %}
-    <h3 class="archive__item-title" itemprop="headline">
-      {% if post.link %}
-        <a href="{{ post.link }}">{{ title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
-      {% else %}
-        <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
-      {% endif %}
-    </h3>
-    {% if post.read_time %}
-      <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
-    {% endif %}
-    {% if post.venue%}<p class="archive__item-excerpt" itemprop="description">{{ post.citation }}</p> {% endif %}
-    </li>
- </article>
-</div>
+  </div>
+
+{% else %}  
+  <div class="{{ include.type | default: "list" }}__item">
+    <article class="archive__item" itemscope itemtype="http://schema.org">
+      <li style="margin-left: 25px; margin-top: 2px !important; margin-bottom: 2px !important; padding: 0 !important;">
+        <div style="line-height: 1.25;">
+          <h3 class="archive__item-title" itemprop="headline" style="margin: 0 0 1px 0 !important; font-size: 1.1em;">
+            {% if post.collection == 'teaching' and post.date_range %}
+              {% assign start_date = post.date_range.start | append: "-01" %}
+              {% assign end_date = post.date_range.end | append: "-01" %}
+              {% assign start_year = start_date | date: "%Y" %}
+              {% assign end_year = end_date | date: "%Y" %}
+              
+              {% if start_year == end_year %}
+                {% capture link_text %}{{ start_date | date: "%B" }} – {{ end_date | date: "%B %Y" }}{% endcapture %}
+              {% else %}
+                {% capture link_text %}{{ start_date | date: "%B %Y" }} – {{ end_date | date: "%B %Y" }}{% endcapture %}
+              {% endif %}
+            {% else %}
+              {% assign link_text = title %}
+            {% endif %}
+
+            {% if post.link %}
+              <a href="{{ post.link }}">{{ link_text }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i></a>
+            {% else %}
+              <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ link_text }}</a>
+            {% endif %}
+          </h3>
+          
+          {% if post.venue %}
+            <p class="archive__item-excerpt" itemprop="description" style="margin: 0 0 1px 0 !important;">
+              {% if post.collection == 'teaching' %}
+                {{ post.type }}, <i>{{ post.venue }}</i>
+              {% else %}
+                {{ post.citation }}
+              {% endif %}
+            </p> 
+          {% endif %}
+
+          {% if post.collection == 'teaching' and post.syllabus %}
+            <p style="font-size: 0.85em; margin: 0 !important;">
+              <i class="fa fa-fw fa-file-pdf" aria-hidden="true"></i> 
+              <a href="{% if post.syllabus contains '://' %}{{ post.syllabus }}{% else %}{{ base_path }}{{ post.syllabus }}{% endif %}" target="_blank">Download Syllabus</a>
+            </p>
+          {% endif %}
+        </div>
+      </li>
+    </article>
+  </div>
+{% endif %}
