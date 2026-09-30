@@ -1,6 +1,6 @@
 ---
 title: "Epidemics in Queueing"
-subtitle: Analyzing the Spread of Infection in the M/M/1 Queue
+subtitle: "Analyzing the Spread of Infection in the M/M/1 Queue"
 collection: talks
 type: "Talk"
 permalink: /talks/2023-informs-talk

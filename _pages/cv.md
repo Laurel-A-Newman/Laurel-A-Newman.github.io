@@ -28,12 +28,9 @@ Cornell ORIE doctoral candidate with experience teaching undergraduates, mentori
 HMC Dean’s List, Spring 2017 – Spring 2021; National Merit Scholar, 2016
 
 ## CONFERENCES 
-* Informs 2023, 2024
-* Cornell Young Researcher’s Workshop 2024, 2025
- ### Talks for informs
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
-  {% endfor %}</ul>
+<ul>{% for post in site.talks reversed %}
+  {% include archive-single-talk-cv.html  %}
+{% endfor %}</ul>
 
 
 ## PUBLICATIONS
