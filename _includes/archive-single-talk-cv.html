@@ -35,12 +35,12 @@
     </h3>
 
     {% if post.subtitle %}
-      <span class="archive__item-subtitle" itemprop="alternativeHeadline" style="display: block; font-style: italic; color: #495057; margin-bottom: 0.2em;">
+      <span class="archive__item-subtitle" itemprop="alternativeHeadline" style="display: block; font-style: italic; color: var(--global-text-color); opacity: 0.8; margin-bottom: 0.2em;">
         {{ post.subtitle | markdownify | remove: "<p>" | remove: "</p>" }}
       </span>
     {% endif %}
 
-    {% if post.date %}<p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {{ post.date | date: '%B %d, %Y' }}</p>{% endif %}
+    {% if post.date %}<p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {{ post.date | date: '%d %B %Y' }}</p>{% endif %}
     {% if post.venue%}<p class="archive__item-excerpt" itemprop="description">{{post.type}} at {{ post.venue }},  {{post.location}}</p>{% endif %}
     </li>
   </article>

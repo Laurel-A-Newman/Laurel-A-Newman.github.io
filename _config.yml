@@ -9,7 +9,7 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
-title                    : "Academia & Research Profile"
+title                    : "Academic & Research Profile"
 title_separator          : "-"
 name                     : &name "Laurel A. Newman"
 description              : &description "L.A. Newman's professional academia portfolio"   # Update this with a general description of your site, this is the default if not overridden by a page
@@ -28,7 +28,7 @@ author:
   pronouns         : "she/hers"  
   bio              : "Cornell ORIE doctoral candidate with experience teaching undergraduates, mentoring undergraduates in summer research, developing course curricula, and working alongside student support staff, with academic focuses in queueing theory, disease modelling, and analyzing algorithms." 
   location         : "Cornell University"
-  employer         : "ORIE"
+  employer         : "School of Operations Research and Information Engineering"
   uri              : "https://www.duffield.cornell.edu/orie/phd-students/"
   email            : "lan66@cornell.edu" 
 

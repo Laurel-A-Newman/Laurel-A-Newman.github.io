@@ -23,11 +23,12 @@ main:
   #- title: "Blog Posts"
   #  url: /year-archive/
     
-  - title: "CV"
-    url: /cv/
+  # commented this out since i've set my home about page to redirect to CV
+  # - title: "CV"
+  #  url: /cv/ 
     
   # - title: "CV"
   #   url: /cv-json/
     
-  - title: "Guide"
-    url: /markdown/
+  # - title: "Guide"
+  #  url: /markdown/

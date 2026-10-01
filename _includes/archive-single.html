@@ -61,8 +61,35 @@
             {% else %}
               <p>Published in <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
             {% endif %}
-        {% elsif post.date %}
-         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ post.date | default: "1900-01-01" | date_to_xmlschema }}">{{ post.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
+        {% elsif post.date or post.date_range %}
+          <p class="page__date">
+            <strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> 
+            {% assign match = site.documents | where: "url", post.url | first %}
+            {% assign true_range = match.date_range | default: post.date_range %}
+            {% if post.collection == 'portfolio' and post.date_range %}
+              {% assign start_month = post.date_range.start | append: "-01" | prepend: "2026-" %}
+              {% assign end_month = post.date_range.end | append: "-01" | prepend: "2026-" %}
+              {% assign year_array = post.date_range.years | sort %}
+              {% assign start_year = year_array.first %}
+              {% assign end_year = year_array.last %}
+              <time>
+                {% if start_year == end_year or end_year == nil %}
+                  {{ start_month | date: "%B" }} -  {{ end_month | date: "%B" }} {{ start_year }}
+                {% else %}
+                  {{ start_month | date: "%B" }} -  {{ end_month | date: "%B" }}, {{ start_year }}-{{ end_year }}
+                {% endif %}
+              </time>
+            {% elsif post.dates %}
+              {% assign dates_array = post.dates | sort %}
+              <time>
+                {% for date_str in post.dates %}
+                  {{ date_str | date: "%d %B %Y" }}{% unless forloop.last %}, {% endunless %}
+                {% endfor %}
+              </time>
+            {% elsif post.date %}
+              <time datetime="{{ post.date | default: "1900-01-01" | date_to_xmlschema }}">{{ post.date | default: "1900-01-01" | date: "%d %B %Y" }}</time>
+            {% endif %}
+          </p>
         {% endif %}
 
     {% if post.excerpt and site.read_more != 'enabled' %}

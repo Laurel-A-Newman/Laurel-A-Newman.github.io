@@ -304,9 +304,38 @@
   }
 
   li {
-    white-space: nowrap;
+    white-space: normal !important;
+    margin-bottom: 8px;
+    
+    /* 👍 Flexbox forces the icon and text into clean side-by-side pillars */
+    display: flex !important;
+    align-items: flex-start; /* Aligns the icon to the very first line of text */
   }
 
+  /* Target the icons */
+  li i.fa,
+  li i.fab,
+  li i.fas,
+  li i[class^="fa-"] {
+    display: inline-block !important;
+    text-align: center;
+    width: 20px;         /* Fixed structural width for the icon pillar */
+    min-width: 20px;     /* Prevents the icon from squeezing if text gets long */
+    margin-top: 3px;     /* Micro-aligns icon center to the text height */
+    margin-right: 8px;   /* Creates the exact space gap before text starts */
+  }
+
+  /* Target all text wrappers cleanly */
+  li a,
+  li span,
+  li [itemprop="worksFor"] {
+    display: inline-block !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    line-height: 1.3 !important;
+    padding-left: 0 !important; /* Reset padding since Flex layout handles alignment */
+    flex: 1;                     /* Allows text column to take up the rest of the sidebar */
+  }
   a {
     display: block;
     margin-bottom: 5px;
